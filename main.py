@@ -1,11 +1,15 @@
-from test import test
+
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "moodle_bot.settings")
+import django
+django.setup()
+from testing import testing
 import telebot
 from telebot import types
 
 bot = telebot.TeleBot('6122227939:AAFN3ZQb4wON7fFGgj8AaCMUokXw6s7Gqmw')
 
-
-test()
+testing()
 markup_inline = types.InlineKeyboardMarkup()
 markup2 = types.InlineKeyboardMarkup()
 item_yes = types.InlineKeyboardButton(text='Креативное мышление и генерация идей', callback_data='yes',
@@ -28,6 +32,7 @@ def get_info(message):
                                       "/start - Выбрать курс\n"
                                       "/help - Информация о боте и всех командах")
     bot.send_sticker(message.chat.id, "CAACAgIAAxkBAAEINN1kGFcHEkgLUMLkO4JnqlLpqMgrcgACtCAAAtDDCUpblvSlWU6vCS8E")
+
 
 @bot.callback_query_handler(func=lambda call: True)
 def answer(call):
@@ -64,12 +69,13 @@ def answer(call):
 @bot.message_handler(commands=['start'])
 def start(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    item1= types.KeyboardButton('что-то')
-    item2= types.KeyboardButton('где-то')
-    item3= types.KeyboardButton('тут-та')
-   # item4= types.KeyboardButton('кнопка')
-    markup.add(item1,item2,item3)
-    bot.send_message(message.chat.id, "Привет, {0.first_name}! Я бот.\nВы хотите узнать информацию по курсу?".format(message.from_user),
+    item1 = types.KeyboardButton('что-то')
+    item2 = types.KeyboardButton('где-то')
+    item3 = types.KeyboardButton('тут-та')
+    # item4= types.KeyboardButton('кнопка')
+    markup.add(item1, item2, item3)
+    bot.send_message(message.chat.id,
+                     "Привет, {0.first_name}! Я бот.\nВы хотите узнать информацию по курсу?".format(message.from_user),
                      reply_markup=markup)
 
 

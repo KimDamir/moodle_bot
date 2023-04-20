@@ -2,7 +2,7 @@ import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "moodle_bot.settings")
 import django
 django.setup()
-from crud.models import Question
+from crud.models import Question, Course
 from crud.crud import *
 import json
 from types import SimpleNamespace
