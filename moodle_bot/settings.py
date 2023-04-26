@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',  
         'NAME': 'moodle_bot',  
         'USER':'root',  
-        'PASSWORD':'MalikRasul07',
+        'PASSWORD':'12580',
         'HOST':'localhost',  
         'PORT':'3306'  
     }  
